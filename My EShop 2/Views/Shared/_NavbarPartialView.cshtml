@@ -1,0 +1,135 @@
+﻿<nav class="navbar navbar-dark bg-white navbar-expand-sm box-shadow mb-3">
+
+    <button class="navbar-toggler text-black-50 bg-dark" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse d-sm-flex flex-sm-row-reverse align-items-center align-content-center justify-content-center">
+        <div class="d-flex flex-row justify-content-around col-12 col-md-12 col-sm-12">
+            <div class="col-md-4 col-sm-5 float-sm-right">
+                <ul class="navbar-nav flex-grow- d-flex flex-md-row flex-column flex-sm-row navs-ul">
+                    <li class="nav-item  d-flex flex-row flex-nowrap align-items-center align-self-center">
+                        <a class=" products-link nav-link text-white position-relative" asp-area="" asp-controller="Home" asp-action="Index"> لیست محصولات </a>
+                    </li>
+                </ul>
+
+
+            </div>
+            <div class="col-md-5 col-sm-5 float-sm-left">
+
+
+                <ul class="navbar-nav d-flex flex-grow-1 account-ul flex-column flex-sm-row justify-content-end align-items-center">
+
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+
+                        <li class="nav-item d-flex flex-row flex-nowrap align-items-center text-dark m-sm-0 p-sm-0 py-2 mx-3">
+                            <a class="nav-link text-white position-relative login-link p-3" asp-area="" asp-controller="Account" asp-action="Login"> ورود </a>
+
+                        </li>
+                        <li class="nav-item  d-flex flex-row flex-nowrap align-items-center m-sm-0 p-sm-0 py-2 mx-3">
+                            <a class="nav-link text-white position-relative register-link" asp-area="" asp-controller="Account" asp-action="Register"> ثبت نام  </a>
+                        </li>
+                    }
+                    else if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item  d-flex flex-row flex-nowrap align-items-center p-2 mx-3">
+                            <a class="nav-link text-dark position-relative register-link" asp-area="" asp-controller="Cart" asp-action="ShowCart"> نمایش سبد خرید </a>
+                        </li>
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item  d-flex flex-row flex-nowrap align-items-center p-2 mx-3">
+                                <a class="nav-link text-dark position-relative register-link" asp-area="Admin" asp-controller="Home" asp-action="Index"> پنل مدیریت </a>
+                            </li>
+
+                        }
+                        <li class="nav-item  d-flex flex-row flex-nowrap align-items-center p-2 mx-3">
+                            <a class="nav-link text-dark position-relative register-link" asp-area="" asp-controller="Account" asp-action="LogOut"> خروج  </a>
+                        </li>
+                        <li class="nav-item d-flex flex-column align-items-center align-self-center mx-3">
+                            <img src="~/Images/default-profile.png" class="rounded-circle" alt="Alternate Text" height="40" width="40" />
+                            <p class="text-dark m-0">@User.Identity.Name</p>
+                        </li>
+                    }
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<ul class="navbar-nav flex-grow-0 d-flex flex-md-row flex-column flex-sm-row">
+        <li class="nav-item d-flex flex-row flex-nowrap align-items-center">
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index"> خانه </a>
+        </li>
+        <li class="nav-item  d-flex flex-row flex-nowrap align-items-center">
+            <a class=" products-link nav-link text-white position-relative" asp-area="" asp-controller="Products" asp-action="Privacy"> لیست محصولات </a>
+        </li>
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <ul class="navbar-nav flex-grow-1 d-flex flex-md-row flex-column flex-sm-row justify-content-end">
+            <li class="nav-item d-flex flex-row flex-nowrap align-items-center text-dark m-sm-0 p-sm-0 py-2">
+                <a class="nav-link text-white position-relative login-link" asp-area="" asp-controller="Account" asp-action="Login"> ورود </a>
+
+            </li>
+            <li class="nav-item  d-flex flex-row flex-nowrap align-items-center m-sm-0 p-sm-0 py-2 ">
+                <a class="nav-link text-white position-relative register-link" asp-area="" asp-controller="Account" asp-action="Register"> ثبت نام  </a>
+            </li>
+            </ul>
+        }
+        else if (User.IsInRole("Admin"))
+        {
+            <ul class="navbar-nav flex-grow-1 d-flex flex-md-row flex-column flex-sm-row justify-content-between">
+            <li class="nav-item d-flex flex-row flex-nowrap align-items-center text-dark">
+                <h3 class="mr-md-5"> خوش آمدید @User.Identity.Name </h3>
+            </li>
+            <li class="nav-item  d-flex flex-row flex-nowrap align-items-center">
+                <a class="nav-link text-dark position-relative register-link" asp-area="" asp-controller="Account" asp-action="LogOut"> خروج  </a>
+            </li>
+            <li class="nav-item  d-flex flex-row flex-nowrap align-items-center">
+                <a class="nav-link text-dark position-relative register-link" asp-area="Admin" asp-controller="Adminestator" asp-action="Index"> پنل مدیریت </a>
+            </li>
+            </ul>
+        }
+        else if (User.IsInRole("User"))
+        {
+            <ul class="navbar-nav flex-grow-1 d-flex flex-md-row flex-column flex-sm-row justify-content-between">
+            <li class="nav-item d-flex flex-row flex-nowrap align-items-center text-dark">
+                <h3 class="mr-md-5"> خوش آمدید @User.Identity.Name </h3>
+            </li>
+            <li class="nav-item  d-flex flex-row flex-nowrap align-items-center">
+                <a class="nav-link text-dark position-relative register-link" asp-area="" asp-controller="Account" asp-action="LogOut"> خروج  </a>
+            </li>
+            </ul>
+        }
+    </ul>*@

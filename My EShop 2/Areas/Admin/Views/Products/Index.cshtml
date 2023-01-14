@@ -1,0 +1,76 @@
+﻿@model IEnumerable<My_EShop_2.Product>
+
+@{
+    ViewData["Title"] = "مدیریت کاربران";
+}
+<h1 class="text-center"> پنل مدیریت کاربران </h1>
+<hr />
+<br />
+<div class="col-md-12 col-sm-12 d-flex flex-row flex-wrap justify-content-center m-md-2 m-sm-1 m-0">
+    <div class="col-md-4 col-sm-4 m-2">
+        <a class="btn btn-block btn-outline-info text-info addproduct" asp-action="Create" asp-controller="Products">
+            افزودن محصول
+        </a>
+    </div>
+    <div class="col-md-4 col-sm-4 col-12 m-2">
+        <a class="btn btn-block btn-outline-success" asp-controller="Categories" asp-action="Index">
+            مدیریت گروه ها
+        </a>
+    </div>  
+    <div class="col-md-4 col-sm-4 m-2">
+        <a class="btn btn-block btn-outline-secondary" asp-controller="UsersManagement" asp-action="Index">
+            مدیریت کاربران
+        </a>
+    </div>
+</div>
+<table class="table table- table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                تصویر
+            </th>
+            <th>
+                عنوان
+            </th>
+            <th>
+                قیمت
+            </th>
+            <th>
+                عنوان گروه
+            </th>
+            <th>
+                تعداد موجود در انبار
+            </th>
+            <th>
+                مدیریت
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    <img class="rounded" width="220" height="160"  src="~/Images/ProductImages/@(item.ProductId)@item.ImageExtension" />
+                </td>
+                <td class="text-center">
+                    @item.Title
+                </td>
+                <td>
+                    @item.Price.ToString("#,### تومان ")
+                </td>
+                <td>
+                    @item.Category.Title
+                </td>
+                <td>
+                    @item.QuantityInStock
+                </td>
+                <td class="text-center mt-1 p-0" style="height:100%" >
+                    <p class="m-0"><a class="btn btn-outline-warning btn-lg mt-2" id="btn-edit" asp-action="Edit" asp-controller="Products" asp-route-id="@item.ProductId"><i class="fa fa-edit icon-edit" style="color:#ffc107"></i></a></p>
+                    <p class="m-0"><a class="btn btn-outline-danger btn-lg mt-2" id="btn-delete" asp-action="Delete" asp-controller="Products" asp-route-id="@item.ProductId"><i class="fa fa-trash-alt icon-delete" style="color:#dc3545"></i></a></p>
+                    <p class="m-0"><a class="btn btn-outline-info btn-lg mx-1 mt-2" id="btn-delete" asp-action="Details" asp-controller="Products" asp-route-id="@item.ProductId"><i class="fa fa-info-circle"></i></a></p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

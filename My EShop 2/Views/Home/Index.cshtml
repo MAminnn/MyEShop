@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "صفحه ی اصلی";
+}
+<div class="row p-3 bg-warning d-flex flex-row flex-wrap justify-content-start">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-2 col-sm-4 col-6 col-md-3 d-flex justify-content-center p-1 card-container rounded">
+            <div class="card border-bottom border-0 d-flex flex-column py-3" title="@item.Title">
+                <img class="card-img-top" src="~/Images/ProductImages/@(item.ProductId)@item.ImageExtension" height="200" />
+                <div class="card-body align-content-sm-center d-flex flex-sm-column flex-md-row flex-wrap justify-content-center justify-content-sm-center">
+                    <h5 class="card-title text-center align-self-start p-2 m-auto" style="font-size:15px">@item.Title</h5>
+                    <p class="card-text text-center align-self-end border-top p-1 m-auto" style="font-size:14px"> قیمت : @item.Price.ToString("#,### تومان") </p><a asp-action="ProductDetails" asp-controller="Home" asp-route-id="@item.ProductId" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script>
+</script>

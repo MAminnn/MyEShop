@@ -1,0 +1,183 @@
+﻿.icon-delete {
+    transition: .15s color ease
+}
+
+.icon-edit {
+    transition: .15s color ease
+}
+
+#btn-edit:hover .icon-edit {
+    color: #fff !important;
+}
+
+#btn-delete:hover .icon-delete {
+    color: #fff !important;
+}
+
+@font-face {
+    font-family: 'Parastoo-Bold';
+    src: url("/fonts/Parastoo-Bold-FD.ttf") format('truetype');
+}
+
+#account-page-body {
+    background-image: url("/Images/147080-orange-and-white-blur-lights-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+* {
+    font-family: Parastoo-Bold;
+}
+
+.products-link {
+    transition: ease-in-out 0.2s all;
+}
+
+.management-link:hover {
+    color: orange !important;
+    transform: translateY(-5px);
+}
+
+.management-link {
+    transition: ease-in-out 0.1s all;
+}
+
+.products-link:hover {
+    color: orange !important;
+    transform: translateY(-5px);
+}
+
+/*.nav-link {
+    color: black !important;
+}*/
+
+a.addproduct:hover {
+    color: #fff !important;
+}
+
+.tests {
+    right: 90% !important;
+}
+
+a.addcategory:hover {
+    color: #fff !important;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.4);
+}
+
+.card {
+    position: relative;
+    transition: linear all 0.3s;
+}
+
+    .card:hover {
+        transform: translateY(-8px)
+    }
+
+li {
+    color: white;
+}
+
+#top-menu {
+    background-image: url(../Images/1597346346678.png);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    background-attachment: local
+}
+
+.gif {
+    width: 100%;
+    height: 300px;
+}
+
+.card-text {
+    height: 66px;
+}
+
+.card-title {
+    height: 66px;
+}
+
+.account-ul{
+    height:100%;
+}
+.navs-ul {
+    height: 100% !important;
+}
+input{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+@media screen and (max-width:700px) {
+    #top-menu {
+        background-image: url(../Images/1597346346678.png);
+        height: 150px;
+    }
+}
+
+@media screen and (min-width:576px) {
+    .nav-link {
+        color: black !important;
+    }
+
+    .login-link::after {
+        content: "/";
+        /*color: #ffc107 !important;*/
+        color: black !important;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .card-container {
+        margin: auto !important;
+    }
+
+    .card-body {
+        flex-direction: column !important;
+    }
+
+    .navbar {
+        z-index: 1;
+        color: white;
+        background-color: rgba(0,0,0,.5) !important;
+    }
+
+    nav-link {
+        color: white !important;
+    }
+}
+
+a.login-link {
+    transition: linear all .2s;
+    padding: 0px !important;
+    word-spacing: -5px !important;
+}
+
+a.register-link {
+    transition: linear all .2s;
+    padding: 0px !important;
+    word-spacing: -2px !important;
+}
+
+
+a.login-link:hover {
+    color: orange !important;
+}
+
+a.register-link:hover {
+    color: orange !important;
+}
+
+@media screen and (max-width:816px) {
+    .btn-add-to-cart {
+        margin-bottom: 4px !important;
+    }
+
+    .btn-back {
+        margin-top: 4px !important;
+        margin-bottom: 4px !important;
+    }
+}

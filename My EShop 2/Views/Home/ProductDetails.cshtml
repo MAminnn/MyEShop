@@ -1,0 +1,49 @@
+﻿@model Product
+@{
+    ViewData["Title"] = $"محصول {Model.Title}";
+}
+@{
+    ViewBag.Title = Model.Title;
+}
+<h1 class="text-center m-2 display-4"> @Model.Title </h1>
+<hr />
+<div class="row">
+    <div class="col-md-8 col-sm-10 col-12 m-sm-auto">
+        <img class="rounded mt-2 p-0" src="~/Images/ProductImages/@(Model.ProductId)@Model.ImageExtension" style="max-width:100%;max-height:100%" />
+    </div>
+    <div class="col-md-4 col-sm-12 col-12 text-center ">
+        <ul class="list-group-horizontal-lg bg-light p-0">
+            <li style="list-style:none;padding:15px;" class="text-left">
+                <dl>
+                    <dt class="bg-dark text-white p-2"> قیمت  </dt>
+                    <dd class="pl-4 mt-2 text-dark">@Model.Price.ToString("0,000 تومان")</dd>
+                </dl>
+            </li>
+            <li style="list-style:none;padding:15px" class="text-left">
+                <dl>
+                    <dt class="bg-dark text-white p-2">تعداد موجود در انبار </dt>
+                    <dd class="pl-4 mt-2  text-dark"> @Model.QuantityInStock </dd>
+                </dl>
+
+            </li>
+            <li style="list-style:none;padding:15px" class="text-left">
+                <dl>
+                    <dt class="bg-dark text-white p-2"> گروه </dt>
+                    <dd class="pl-4 mt-2 text-dark"> @Model.Category.Title </dd>
+                </dl>
+            </li>
+        </ul>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-primary" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.ProductId"> افزودن به سبد خرید</a>
+            <a class="btn btn-secondary" href="javascript:history.go(-1)"> بازگشت </a>
+        }
+        else
+        {
+            <p class="alert-danger p-2"> برای خرید از سایت ما باید ابتدا عضو شوید </p>
+                
+            <a class="btn btn-secondary btn-block" href="javascript:history.go(-1)"> بازگشت </a>
+        }
+
+    </div>
+</div>

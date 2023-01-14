@@ -1,0 +1,47 @@
+﻿@model My_EShop_2.Product
+
+@{
+    ViewData["Title"] = "افزودن محصول";
+}
+<h1>افزودن محصول</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label"> عنوان </label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label"> گروه </label>
+                <select asp-for="CategoryId" asp-items="@ViewBag.CategoriesList" class="form-control">
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="Price" class="control-label"></label>
+            <input type="number" min="0" step="500" asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="QuantityInStock" class="control-label"></label>
+            <input min="1" asp-for="QuantityInStock" class="form-control" />
+            <span asp-validation-for="QuantityInStock" class="text-danger"></span>
+        </div>
+            <div class="form-group">
+            <input type="file" name="ProductImage" draggable="true" />
+            <br />
+            <span asp-validation-for="ImageExtension" class="text-danger"></span>
+        </div>
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-secondary">بازگشت</a>
+                <input type="submit" value="افزودن" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

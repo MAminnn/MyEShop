@@ -1,0 +1,38 @@
+﻿@model My_EShop_2.Product
+
+@{
+    ViewData["Title"] = "جزئیات محصول";
+}
+
+<p class="text-center"><h1>جزئیات محصول '@Model.Title'</h1></p>
+<hr />
+<div class="row text-center">
+    <div class="col-md-6 col-sm-12">
+        <img class="rounded" src="~/Images/ProductImages/@(Model.ProductId)@Model.ImageExtension" height="500" width="500" />
+    </div>
+    <div class="col-md-5 col-sm-10">
+        <ul class="list-group-horizontal-lg bg-light p-0">
+            <li style="list-style:none;padding:15px;" class="text-left">
+                <dl>
+                    <dt class="bg-dark text-white p-2"> قیمت  </dt>
+                    <dd class="pl-4 mt-2 text-dark"">@Model.Price.ToString("0,000 تومان")</dd>
+                </dl>
+            </li>
+            <li style="list-style:none;padding:15px" class="text-left">
+                <dl>
+                    <dt class="bg-dark text-white p-2">تعداد موجود در انبار </dt>
+                    <dd class="pl-4 mt-2 text-dar text-dark""> @Model.QuantityInStock </dd>
+                </dl>
+
+            </li>
+            <li style="list-style:none;padding:15px" class="text-left">
+                <dl>
+                    <dt class="bg-dark text-white p-2"> گروه </dt>
+                    <dd class="pl-4 mt-2 text-dark" > @Model.Category.Title </dd>
+                </dl>
+            </li>
+        </ul>
+        <a asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-warning col-md-5 col-5 col-sm-5"> ویرایش </a> |
+        <a href="javascript:history.go(-1)" class="btn btn-primary col-md-5 col-sm-5 col-5"> بازگشت </a>
+    </div>
+</div>

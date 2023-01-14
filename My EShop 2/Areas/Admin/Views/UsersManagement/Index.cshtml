@@ -1,0 +1,63 @@
+﻿@model IEnumerable<My_EShop_2.User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h1 class="text-center"> پنل مدیریت کاربران </h1>
+<hr />
+<div class="col-md-12 col-sm-12 d-flex flex-row flex-wrap justify-content-center m-md-2 m-sm-1 m-0">
+    <div class="col-md-4 col-sm-4 m-2">
+        <a class="btn btn-block btn-outline-info text-info addproduct" asp-action="Create" asp-controller="UsersManagement">
+            افزودن کاربر
+        </a>
+    </div>
+    <div class="col-md-4 col-sm-4 col-12 m-2">
+        <a class="btn btn-block btn-outline-success" asp-controller="Categories" asp-action="Index">
+            مدیریت گروه ها
+        </a>
+    </div>
+    <div class="col-md-4 col-sm-4 m-2">
+        <a class="btn btn-block btn-outline-secondary" asp-controller="Products" asp-action="Index">
+            مدیریت محصولات
+        </a>
+    </div>
+</div>
+<table class="table table-borderless">
+    <thead>
+        <tr class="bg-secondary text-white">
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                دستورات
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="border-bottom">
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-warning">ویرایش</a> |
+                    <a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-danger">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

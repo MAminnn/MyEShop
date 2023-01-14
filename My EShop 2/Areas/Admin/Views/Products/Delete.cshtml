@@ -1,0 +1,45 @@
+﻿@model My_EShop_2.Product
+
+@{
+    ViewData["Title"] = "حذف محصول";
+}
+
+<p class="text-center"><h1>حذف محصول</h1></p>
+<hr />
+<h3 class="mb-3">آیا از حذف محصول '@Model.Title' مطمئن هستید ؟</h3>
+<div class="text-center">
+    <div class="row m-3">
+        <div class="col-md-6 col-sm-12">
+            <img class="img-thumbnail my-1" height="400" width="500" src="~/Images/ProductImages/@(Model.ProductId)@Model.ImageExtension"/>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <table class="table-bordered m-auto col-md-12 col-sm-12 col-12">
+                <thead class="thead-dark bg-dark">
+                    <tr class="p-2 text-white w-100">
+                        <th class="p-2">
+                            نام محصول
+                        </th>
+                        <th class="p-2">
+                            قیمت
+                        </th>
+                        <th class="p-2">
+                            تعداد در انبار
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.Title</td>
+                        <td>@Model.Price.ToString("#,### تومان")</td>
+                        <td>@Model.QuantityInStock</td>
+                    </tr>
+                </tbody>
+            </table>
+            <form asp-action="Delete" class="my-3">
+                <input type="hidden" asp-for="ProductId" />
+                <input type="submit" value="حذف" class="btn btn-danger col-md-6 col-6 col-sm-5" /> |
+                <a asp-action="Index" class="btn btn-primary col-6 col-sm-6 col-md-5"> بازگشت </a>
+            </form>
+        </div>
+    </div>
+</div>

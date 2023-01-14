@@ -1,0 +1,37 @@
+﻿@model Cart
+@{
+    ViewData["Title"] = "سبد خرید";
+}
+
+<h1 class="text-center m-auto display-3 my-3">سبد خرید</h1>
+<hr />
+<div class="container">
+    <table class="table table-bordered">
+        <thead class="thead-light bg-secondary">
+            <tr>
+                <td colspan="2" class="text-white">جزئیات کالا</td>
+                <td class="text-white">قیمت</td>
+                <td class="text-white">تعداد</td>
+                <td class="text-white">جمع</td>
+                <td class="text-white">مدیریت</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td class="d-flex flex-row border-0 p-2 justify-content-center"><img class="rounded" width="140" height="100" src="~/Images/ProductImages/@(item.Item.Product.ProductId)@(item.Item.Product.ImageExtension)" /></td>
+                    <td>@item.Item.Product.Title</td>
+                    <td>@item.Item.Product.Price.ToString("#,### تومان")</td>
+                    <td>@item.Count</td>
+                    <td>@{var Sum = item.Count * item.Item.Product.Price;}@Sum.ToString("#,### تومان")</td>
+                    <td>
+                        <a class="btn btn-danger col-12 col-sm-12 col-xl-5 mb-1 m-xl-0" asp-route-id="@item.CartItemId" asp-action="RemoveOneItem" asp-controller="Cart">حذف</a>
+                        <a class="btn btn-danger col-12 col-sm-12 col-xl-6 mt-1 m-xl-0" asp-route-id="@item.CartItemId" asp-action="RemoveAllItems" asp-controller="Cart">حذف کامل</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h2 class="m-auto"> جمع کل : @Model.SumOfPrice.ToString("#,### تومان")</h2>
+</div>
